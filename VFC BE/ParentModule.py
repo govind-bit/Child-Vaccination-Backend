@@ -44,6 +44,7 @@ def add_child(p_mail):
     
     # Return a JSON response indicating success
         return jsonify({'status': 'success', 'child_id': child.C_ID}), 200
+    #commments
     except sqlalchemy.exc.IntegrityError:
         db.session.rollback()
         return jsonify({'status': 'error', 'message': 'User name already exist'}), 400
