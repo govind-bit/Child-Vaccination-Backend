@@ -110,3 +110,24 @@ def update_child(p_mail, child_id):
         db.session.rollback()
         # Return error message
         return jsonify({'status': 'error', 'message': f'Error updating child: {str(e)}'}), 400
+#________________________________________________________________________________________________
+
+@parent_bp.route('/get_children/<p_mail>', methods=['GET'])
+def get_children(p_mail):
+    try:
+        children = C_INFO.query.filter_by(P_MAIL=p_mail).all()
+
+        children_data = []
+        for child in children:
+            children_data.append({
+                'child_id': child.C_ID,
+                'c_name': child.C_NAME,
+                'age': child.AGE,
+                'dob': str(child.DOB),
+                'gender': child.GENDER,
+                'blood_type': child.BLOOD_TYPE
+            })
+
+        return jsonify({'status': 'success', 'children': children_data}), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': f'Error fetching children: {str(e)}'}), 500
