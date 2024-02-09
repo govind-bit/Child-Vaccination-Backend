@@ -29,3 +29,14 @@ class A_INFO(db.Model):
     __tablename__="A_INFO"
     MAIL = db.Column(db.String(100),primary_key=True, unique=True, nullable=False)
     PASSWORD = db.Column(db.String(100), nullable=False)
+
+class C_INFO(db.Model):
+    __tablename__="C_INFO"
+    C_ID=db.Column(db.Integer, primary_key=True,unique=True,nullable=False)
+    C_NAME=db.Column(db.String(200))
+    AGE=db.Column(db.Integer)
+    DOB=db.Column(db.Date)
+    GENDER=db.Column(db.String(100))
+    BLOOD TYPE=db.Column(db.String(100))
+    P_MAIL=db.Column(db.String(100)db.ForeignKey('P_INFO.MAIL'), nullable=False)
+    
