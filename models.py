@@ -38,5 +38,5 @@ class C_INFO(db.Model):
     DOB=db.Column(db.Date)
     GENDER=db.Column(db.String(100))
     BLOOD TYPE=db.Column(db.String(100))
-    P_MAIL=db.Column(db.String(100)db.ForeignKey('P_INFO.MAIL'), nullable=False)
+    P_MAIL=db.Column(db.String(100),db.ForeignKey('P_INFO.MAIL'), nullable=False)
     
